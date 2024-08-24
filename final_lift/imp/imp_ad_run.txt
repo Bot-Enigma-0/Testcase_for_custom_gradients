@@ -1,0 +1,1123 @@
+
+-------------------------------------------------------------------------
+|    ___ _   _ ___                                                      |
+|   / __| | | |_  )   Release 8.0.1 "Harrier"                           |
+|   \__ \ |_| |/ /                                                      |
+|   |___/\___//___|   Suite (Computational Fluid Dynamics Code)         |
+|                                                                       |
+-------------------------------------------------------------------------
+| SU2 Project Website: https://su2code.github.io                        |
+|                                                                       |
+| The SU2 Project is maintained by the SU2 Foundation                   |
+| (http://su2foundation.org)                                            |
+-------------------------------------------------------------------------
+| Copyright 2012-2024, SU2 Contributors                                 |
+|                                                                       |
+| SU2 is free software; you can redistribute it and/or                  |
+| modify it under the terms of the GNU Lesser General Public            |
+| License as published by the Free Software Foundation; either          |
+| version 2.1 of the License, or (at your option) any later version.    |
+|                                                                       |
+| SU2 is distributed in the hope that it will be useful,                |
+| but WITHOUT ANY WARRANTY; without even the implied warranty of        |
+| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU      |
+| Lesser General Public License for more details.                       |
+|                                                                       |
+| You should have received a copy of the GNU Lesser General Public      |
+| License along with SU2. If not, see <http://www.gnu.org/licenses/>.   |
+-------------------------------------------------------------------------
+
+Parsing config file for zone 0
+
+----------------- Physical Case Definition ( Zone 0 ) -------------------
+Discrete Adjoint equations using Algorithmic Differentiation
+based on the physical case: Compressible Euler equations.
+Mach number: 2.
+Angle of attack (AoA): 0 deg, and angle of sideslip (AoS): 0 deg.
+No restart solution, use the values at infinity (freestream).
+Dimensional simulation.
+The reference area is 1 m^2.
+The semi-span will be computed using the max y(3D) value.
+The reference length is 1 m.
+Reference origin for moment evaluation is (0.25, 0, 0).
+Surface(s) where the force coefficients are evaluated: Wall.
+
+Surface(s) where the objective function is evaluated: Wall.
+Surface(s) plotted in the output file: Wall.
+Surface(s) to be analyzed in detail: Wall.
+Input mesh file name: ../wedge_with_ffd.su2
+
+---------------- Design problem definition  ( Zone 0 ) ------------------
+CL objective function.
+
+--------------- Space Numerical Integration ( Zone 0 ) ------------------
+Jameson-Schmidt-Turkel scheme (2nd order in space) for the flow inviscid terms.
+JST viscous coefficients (2nd & 4th): 0.5, 0.02.
+The method includes a grid stretching correction (p = 0.3).
+Gradient for viscous and source terms: inverse-distance weighted Least-Squares.
+
+--------------- Time Numerical Integration  ( Zone 0 ) ------------------
+Local time stepping (steady state simulation).
+Euler implicit method for the flow equations.
+BCGSTAB is used for solving the linear system.
+Using a ILU(0) preconditioning.
+Convergence criteria of the linear solver: 1e-05.
+Max number of linear iterations: 50.
+W Multigrid Cycle, with 3 multigrid levels.
+Damping factor for the residual restriction: 1.
+Damping factor for the correction prolongation: 1.
+CFL adaptation. Factor down: 0.9, factor up: 1.1,
+                lower limit: 0.1, upper limit: 1e+10,
+                acceptable linear residual: 0.001.
++-------------------------------------------+
+|  MG Level| Presmooth|PostSmooth|CorrectSmo|
++-------------------------------------------+
+|         0|         1|         0|         0|
+|         1|         2|         0|         0|
+|         2|         3|         0|         0|
+|         3|         3|         0|         0|
++-------------------------------------------+
+Courant-Friedrichs-Lewy number:        5
+
+------------------ Convergence Criteria  ( Zone 0 ) ---------------------
+Maximum number of solver subiterations: 1.
+Maximum number of solver outer iterations: 10000.
+Begin convergence monitoring at iteration 10.
+Residual minimum value: 1e-14.
+Cauchy series min. value: 1e-10.
+Number of Cauchy elements: 100.
+Begin windowed time average at iteration 0.
+
+-------------------- Output Information ( Zone 0 ) ----------------------
+File writing frequency: 
++------------------------------------+
+|                     File| Frequency|
++------------------------------------+
+|                  RESTART|       250|
+|                 PARAVIEW|       250|
+|         SURFACE_PARAVIEW|       250|
++------------------------------------+
+Writing the convergence history file every 1 inner iterations.
+Writing the convergence history file every 1 outer iterations.
+Writing the screen convergence history every 1 inner iterations.
+Writing the screen convergence history every 1 outer iterations.
+The tabular file format is CSV (.csv).
+Convergence history file name: history.
+Forces breakdown file name: forces_breakdown.dat.
+Adjoint solution file name: restart_adj.dat.
+Restart adjoint file name: restart_adj.dat.
+Adjoint variables file name: adjoint.
+Surface adjoint file name: surface_adjoint.
+
+------------- Config File Boundary Information ( Zone 0 ) ---------------
++-----------------------------------------------------------------------+
+|                        Marker Type|                        Marker Name|
++-----------------------------------------------------------------------+
+|                         Euler wall|                               Wall|
++-----------------------------------------------------------------------+
+|                          Far-field|                                Far|
++-----------------------------------------------------------------------+
+|          Supersonic inlet boundary|                              Inlet|
++-----------------------------------------------------------------------+
+|         Supersonic outlet boundary|                             Outlet|
++-----------------------------------------------------------------------+
+
+-------------------- Output Preprocessing ( Zone 0 ) --------------------
+  Info: Ignoring the following screen output fields:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+Screen output fields: OUTER_ITER
+  Info: Ignoring the following history output groups:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+History output group(s): OUTER_ITER
+Ignoring Convergence Field(s): RMS_ADJ_DENSITY[0] 
+Warning: No (valid) fields chosen for convergence monitoring. Convergence monitoring inactive.
+Warning: No (valid) fields chosen for time convergence monitoring. Time convergence monitoring inactive.
+Volume output fields: COORDINATES, SOLUTION, SENSITIVITY
+
+------------------- Output Preprocessing ( Multizone ) ------------------
+  Info: Ignoring the following screen output fields:
+  RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+Screen output fields: OUTER_ITER, RMS_ADJ_DENSITY[0], RMS_ADJ_MOMENTUM-X[0], RMS_ADJ_MOMENTUM-Y[0], RMS_ADJ_ENERGY[0]
+  Info: Ignoring the following history output groups:
+  RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+History output group(s): OUTER_ITER, RMS_RES[0]
+Convergence field(s): RMS_ADJ_DENSITY[0]
+Warning: No (valid) fields chosen for time convergence monitoring. Time convergence monitoring inactive.
+
+------------------- Geometry Preprocessing ( Zone 0 ) -------------------
+Two dimensional problem.
+20301 grid points before partitioning.
+20000 volume elements before partitioning.
+4 surface markers.
+140 boundary elements in index 0 (Marker = Inlet).
+100 boundary elements in index 1 (Marker = Outlet).
+200 boundary elements in index 2 (Marker = Far).
+160 boundary elements in index 3 (Marker = Wall).
+Executing the partitioning functions.
+Building the graph adjacency structure.
+Calling ParMETIS... graph partitioning complete (900 edge cuts).
+Distributing ParMETIS coloring.
+Rebalancing vertices.
+Rebalancing volume element connectivity.
+Rebalancing markers and surface elements.
+22120 vertices including ghost points. 
+20899 interior elements including halo cells. 
+20899 quadrilaterals.
+Establishing MPI communication patterns.
+Setting point connectivity.
+Renumbering points (Reverse Cuthill McKee Ordering).
+Recomputing point connectivity.
+Setting element connectivity.
+Checking the numerical grid orientation.
+All volume elements are correctly orientend.
+There has been a re-orientation of 102 LINE surface elements.
+Identifying edges and vertices.
+Setting the control volume structure.
+Area of the computational grid: 45.9736.
+Searching for the closest normal neighbors to the surfaces.
+Storing a mapping from global to local point index.
+Compute the surface curvature.
+Max K: 31.2348. Mean K: 0.371244. Standard deviation K: 3.22672.
+Checking for periodicity.
+Computing mesh quality statistics for the dual control volumes.
++--------------------------------------------------------------+
+|           Mesh Quality Metric|        Minimum|        Maximum|
++--------------------------------------------------------------+
+|    Orthogonality Angle (deg.)|         75.998|             90|
+|     CV Face Area Aspect Ratio|              1|        2.57292|
+|           CV Sub-Volume Ratio|              1|        1.00312|
++--------------------------------------------------------------+
+Setting the multigrid structure.
++-------------------------------------------+
+|  MG Level|       CVs|Aggl. Rate|       CFL|
++-------------------------------------------+
+|         0|     22120|    1/1.00|         5|
+|         1|      5923|    1/3.73|   3.88096|
+|         2|      1566|    1/3.78|   2.99334|
+|         3|       540|     1/2.9|   2.63662|
++-------------------------------------------+
+Finding max control volume width.
+Communicating number of neighbors.
+Wetted area = 8.12273 m.
+Area projection in the x-plane = 1 m, y-plane = 0 m.
+Max. coordinate in the x-direction = 10 m, y-direction = 1 m.
+Min. coordinate in the x-direction = 2 m, y-direction = 0 m.
+Checking if Euler & Symmetry markers are straight/plane:
+Boundary marker Wall is NOT a single straight.
+Computing wall distances.
+
+-------------------- Solver Preprocessing ( Zone 0 ) --------------------
+Inviscid flow: Computing density based on free-stream
+temperature and pressure using the ideal gas law.
+Force coefficients computed using free-stream values.
+
+-- Models:
++------------------------------------------------------------------------------+
+|          Viscosity Model|        Conductivity Model|              Fluid Model|
++------------------------------------------------------------------------------+
+|                        -|                         -|             STANDARD_AIR|
++------------------------------------------------------------------------------+
+-- Fluid properties:
++------------------------------------------------------------------------------+
+|                  Name|    Dim. value|    Ref. value|      Unit|Non-dim. value|
++------------------------------------------------------------------------------+
+|          Gas Constant|       287.058|             1|  N.m/kg.K|       287.058|
+|      Spec. Heat Ratio|             -|             -|         -|           1.4|
++------------------------------------------------------------------------------+
+-- Initial and free-stream conditions:
++------------------------------------------------------------------------------+
+|                  Name|    Dim. value|    Ref. value|      Unit|Non-dim. value|
++------------------------------------------------------------------------------+
+|       Static Pressure|        100000|             1|        Pa|        100000|
+|               Density|       1.16121|             1|    kg/m^3|       1.16121|
+|           Temperature|           300|             1|         K|           300|
+|          Total Energy|        456422|             1|   m^2/s^2|        456422|
+|            Velocity-X|       694.448|             1|       m/s|       694.448|
+|            Velocity-Y|             0|             1|       m/s|             0|
+|    Velocity Magnitude|       694.448|             1|       m/s|       694.448|
++------------------------------------------------------------------------------+
+|           Mach Number|             -|             -|         -|             2|
++------------------------------------------------------------------------------+
+Initialize Jacobian structure (Euler). MG level: 0.
+Initialize Jacobian structure (Euler). MG level: 1.
+Initialize Jacobian structure (Euler). MG level: 2.
+Initialize Jacobian structure (Euler). MG level: 3.
+
+------------------- Numerics Preprocessing ( Zone 0 ) -------------------
+
+----------------- Integration Preprocessing ( Zone 0 ) ------------------
+
+------------------- Iteration Preprocessing ( Zone 0 ) ------------------
+Discrete adjoint Euler/Navier-Stokes/RANS fluid iteration.
+Euler/Navier-Stokes/RANS fluid iteration.
+
+WARNING: SURFACE_PRESSURE_DROP can only be computed for at least 2 surfaces (outlet, inlet, ...)
+
+  Info: Ignoring the following screen output fields:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+Screen output fields: OUTER_ITER
+  Info: Ignoring the following history output groups:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+History output group(s): OUTER_ITER
+Ignoring Convergence Field(s): RMS_ADJ_DENSITY[0] 
+Warning: No (valid) fields chosen for convergence monitoring. Convergence monitoring inactive.
+Warning: No (valid) fields chosen for time convergence monitoring. Time convergence monitoring inactive.
+
+------------------------------ Begin Solver -----------------------------
+
+Simulation Run using the Discrete Adjoint Multizone Driver
+
+-------------------------------------------------------------------------
+Clearing the computational graph.
+
+-------------------------------------------------------------------------
+Storing computational graph wrt CONSERVATIVE VARIABLES.
+ Objective function                   : -1.56844 (35299)
+
+-------------------------------------
+CoDi Tape Statistics ( JacobianLinearTape )
+-------------------------------------
+  Total memory used      :      849.82 KB
+  Total memory allocated :       30.39 MB
+-------------------------------------
+Adjoint vector
+-------------------------------------
+  Number of adjoints     :       35299
+  Memory allocated       :      275.77 KB
+-------------------------------------
+Index manager
+-------------------------------------
+  Max. live indices      :       35299
+-------------------------------------
+Statement entries
+-------------------------------------
+  Total number           :       35299
+  Number of chunks       :           1
+  Memory used            :       34.47 KB
+  Memory allocated       :        2.00 MB
+-------------------------------------
+Jacobian entries
+-------------------------------------
+  Total number           :       45761
+  Number of chunks       :           1
+  Memory used            :      536.26 KB
+  Memory allocated       :       24.00 MB
+-------------------------------------
+Low level function info data entries
+-------------------------------------
+  Total number           :          77
+  Number of chunks       :           1
+  Memory used            :      308.00 B
+  Memory allocated       :      128.00 KB
+-------------------------------------
+Low level function byte data entries
+-------------------------------------
+  Total number           :        3080
+  Number of chunks       :           1
+  Memory used            :        3.01 KB
+  Memory allocated       :        4.00 MB
+-------------------------------------
+MPI
+-------------------------------------
+  Total memory used      :  1.03143e+07 MB
+-------------------------------------
+
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+Residual norm after zone 0 is: 0.00126835
+
+-------------------------------------------------------------------------
+Clearing the computational graph.
+
+-------------------------------------------------------------------------
+Storing computational graph wrt CONSERVATIVE VARIABLES.
++---------------------------------------------------------------+
+| rms_Flow[0][0]| rms_Flow[1][0]| rms_Flow[2][0]| rms_Flow[3][0]|
++---------------------------------------------------------------+
+|-13.9707404267608|-10.9894458368578|-11.6233458043156|-8.13586238190304|
++---------------------------------------------------------------+
+
+-------------------------------------------------------------------------
+
+-------------------------------------
+CoDi Tape Statistics ( JacobianLinearTape )
+-------------------------------------
+  Total memory used      :       52.97 MB
+  Total memory allocated :       66.02 MB
+-------------------------------------
+Adjoint vector
+-------------------------------------
+  Number of adjoints     :     1558718
+  Memory allocated       :       11.89 MB
+-------------------------------------
+Index manager
+-------------------------------------
+  Max. live indices      :     1558718
+-------------------------------------
+Statement entries
+-------------------------------------
+  Total number           :     1558718
+  Number of chunks       :           1
+  Memory used            :        1.49 MB
+  Memory allocated       :        2.00 MB
+-------------------------------------
+Jacobian entries
+-------------------------------------
+  Total number           :     3453499
+  Number of chunks       :           2
+  Memory used            :       39.52 MB
+  Memory allocated       :       48.00 MB
+-------------------------------------
+Low level function info data entries
+-------------------------------------
+  Total number           :        1705
+  Number of chunks       :           1
+  Memory used            :        6.66 KB
+  Memory allocated       :      128.00 KB
+-------------------------------------
+Low level function byte data entries
+-------------------------------------
+  Total number           :       68200
+  Number of chunks       :           1
+  Memory used            :       66.60 KB
+  Memory allocated       :        4.00 MB
+-------------------------------------
+MPI
+-------------------------------------
+  Total memory used      :  647188380 MB
+-------------------------------------
+
++----------------------------------------------------------------+
+|                        Multizone Summary                       |
++----------------------------------------------------------------+
+|  Outer_Iter|rms[A_Rho][0|rms[A_RhoU][|rms[A_RhoV][| rms[A_E][0]|
++----------------------------------------------------------------+
+|           0|   -2.963029|   -5.476000|   -5.607881|   -8.309781|
+|           1|   -3.036207|   -5.558946|   -5.617004|   -8.419207|
+|           2|   -3.118042|   -5.666307|   -5.703269|   -8.540050|
+|           3|   -3.201085|   -5.785871|   -5.819429|   -8.675095|
+|           4|   -3.244755|   -5.837294|   -5.878443|   -8.733014|
+|           5|   -3.270861|   -5.862439|   -5.903754|   -8.757566|
+|           6|   -3.309931|   -5.912567|   -5.951005|   -8.812088|
+|           7|   -3.363455|   -5.987459|   -6.026609|   -8.899046|
+|           8|   -3.419167|   -6.065043|   -6.111183|   -8.991775|
+|           9|   -3.468404|   -6.127302|   -6.185296|   -9.066290|
+|          10|   -3.508987|   -6.174045|   -6.244817|   -9.121444|
+|          11|   -3.544694|   -6.215747|   -6.299623|   -9.170373|
+|          12|   -3.580902|   -6.259360|   -6.357861|   -9.222324|
+|          13|   -3.618892|   -6.304575|   -6.418031|   -9.276547|
+|          14|   -3.656502|   -6.348045|   -6.474367|   -9.327794|
+|          15|   -3.692166|   -6.387861|   -6.524142|   -9.373400|
+|          16|   -3.726023|   -6.424543|   -6.568809|   -9.414492|
+|          17|   -3.758570|   -6.459375|   -6.610871|   -9.453063|
+|          18|   -3.789961|   -6.492977|   -6.651447|   -9.490231|
+|          19|   -3.820135|   -6.525266|   -6.690083|   -9.526193|
+|          20|   -3.848975|   -6.555997|   -6.725911|   -9.560614|
+|          21|   -3.876451|   -6.585068|   -6.758740|   -9.593132|
+|          22|   -3.902669|   -6.612525|   -6.789125|   -9.623583|
+|          23|   -3.927772|   -6.638495|   -6.817659|   -9.651968|
+|          24|   -3.951824|   -6.663114|   -6.844540|   -9.678444|
+|          25|   -3.974855|   -6.686507|   -6.869791|   -9.703247|
+|          26|   -3.996943|   -6.708838|   -6.893550|   -9.726624|
+|          27|   -4.018231|   -6.730316|   -6.916089|   -9.748864|
+|          28|   -4.038848|   -6.751141|   -6.937653|   -9.770286|
+|          29|   -4.058859|   -6.771434|   -6.958375|   -9.791128|
+|          30|   -4.078280|   -6.791223|   -6.978302|   -9.811478|
+|          31|   -4.097128|   -6.810474|   -6.997473|   -9.831297|
+|          32|   -4.115422|   -6.829139|   -7.015950|   -9.850480|
+|          33|   -4.133177|   -6.847191|   -7.033814|   -9.868940|
+|          34|   -4.150411|   -6.864634|   -7.051123|   -9.886659|
+|          35|   -4.167155|   -6.881497|   -7.067908|   -9.903679|
+|          36|   -4.183445|   -6.897826|   -7.084180|   -9.920063|
+|          37|   -4.199308|   -6.913665|   -7.099941|   -9.935886|
+|          38|   -4.214757|   -6.929047|   -7.115199|   -9.951210|
+|          39|   -4.229787|   -6.943986|   -7.129968|   -9.966080|
+|          40|   -4.244391|   -6.958486|   -7.144274|   -9.980521|
+|          41|   -4.258567|   -6.972550|   -7.158148|   -9.994546|
+|          42|   -4.272323|   -6.986181|   -7.171626|  -10.008162|
+|          43|   -4.285671|   -6.999392|   -7.184746|  -10.021384|
+|          44|   -4.298628|   -7.012205|   -7.197548|  -10.034232|
+|          45|   -4.311221|   -7.024649|   -7.210070|  -10.046738|
+|          46|   -4.323482|   -7.036760|   -7.222351|  -10.058938|
+|          47|   -4.335448|   -7.048583|   -7.234431|  -10.070876|
+|          48|   -4.347160|   -7.060163|   -7.246347|  -10.082599|
+|          49|   -4.358658|   -7.071546|   -7.258137|  -10.094153|
+|          50|   -4.369982|   -7.082775|   -7.269834|  -10.105578|
+|          51|   -4.381168|   -7.093887|   -7.281468|  -10.116912|
+|          52|   -4.392253|   -7.104918|   -7.293069|  -10.128184|
+|          53|   -4.403268|   -7.115896|   -7.304662|  -10.139421|
+|          54|   -4.414243|   -7.126848|   -7.316271|  -10.150644|
+|          55|   -4.425203|   -7.137796|   -7.327915|  -10.161872|
+|          56|   -4.436170|   -7.148758|   -7.339612|  -10.173120|
+|          57|   -4.447163|   -7.159749|   -7.351375|  -10.184400|
+|          58|   -4.458194|   -7.170779|   -7.363216|  -10.195722|
+|          59|   -4.469275|   -7.181857|   -7.375139|  -10.207090|
+|          60|   -4.480412|   -7.192986|   -7.387150|  -10.218509|
+|          61|   -4.491610|   -7.204166|   -7.399247|  -10.229976|
+|          62|   -4.502868|   -7.215395|   -7.411428|  -10.241489|
+|          63|   -4.514186|   -7.226670|   -7.423687|  -10.253043|
+|          64|   -4.525561|   -7.237986|   -7.436016|  -10.264632|
+|          65|   -4.536988|   -7.249337|   -7.448404|  -10.276248|
+|          66|   -4.548462|   -7.260717|   -7.460842|  -10.287885|
+|          67|   -4.559979|   -7.272121|   -7.473315|  -10.299534|
+|          68|   -4.571532|   -7.283543|   -7.485814|  -10.311191|
+|          69|   -4.583116|   -7.294979|   -7.498328|  -10.322849|
+|          70|   -4.594726|   -7.306424|   -7.510846|  -10.334503|
+|          71|   -4.606358|   -7.317877|   -7.523363|  -10.346152|
+|          72|   -4.618010|   -7.329336|   -7.535872|  -10.357792|
+|          73|   -4.629679|   -7.340801|   -7.548371|  -10.369424|
+|          74|   -4.641363|   -7.352273|   -7.560859|  -10.381049|
+|          75|   -4.653063|   -7.363755|   -7.573339|  -10.392671|
+|          76|   -4.664781|   -7.375251|   -7.585813|  -10.404294|
+|          77|   -4.676518|   -7.386765|   -7.598289|  -10.415924|
+|          78|   -4.688279|   -7.398305|   -7.610773|  -10.427568|
+|          79|   -4.700069|   -7.409878|   -7.623276|  -10.439237|
+|          80|   -4.711893|   -7.421493|   -7.635807|  -10.450938|
+|          81|   -4.723760|   -7.433158|   -7.648377|  -10.462683|
+|          82|   -4.735676|   -7.444884|   -7.661000|  -10.474483|
+|          83|   -4.747650|   -7.456681|   -7.673688|  -10.486349|
+|          84|   -4.759693|   -7.468560|   -7.686453|  -10.498293|
+|          85|   -4.771812|   -7.480531|   -7.699308|  -10.510327|
+|          86|   -4.784019|   -7.492605|   -7.712266|  -10.522462|
+|          87|   -4.796323|   -7.504793|   -7.725338|  -10.534709|
+|          88|   -4.808735|   -7.517105|   -7.738536|  -10.547078|
+|          89|   -4.821266|   -7.529551|   -7.751870|  -10.559580|
+|          90|   -4.833923|   -7.542140|   -7.765349|  -10.572224|
+|          91|   -4.846718|   -7.554881|   -7.778980|  -10.585018|
+|          92|   -4.859658|   -7.567781|   -7.792771|  -10.597968|
+|          93|   -4.872751|   -7.580847|   -7.806725|  -10.611081|
+|          94|   -4.886003|   -7.594083|   -7.820847|  -10.624360|
+|          95|   -4.899420|   -7.607495|   -7.835138|  -10.637810|
+|          96|   -4.913006|   -7.621085|   -7.849598|  -10.651432|
+|          97|   -4.926763|   -7.634853|   -7.864226|  -10.665226|
+|          98|   -4.940693|   -7.648799|   -7.879019|  -10.679191|
+|          99|   -4.954793|   -7.662921|   -7.893971|  -10.693324|
+|         100|   -4.969063|   -7.677215|   -7.909077|  -10.707619|
+|         101|   -4.983498|   -7.691676|   -7.924328|  -10.722072|
+|         102|   -4.998093|   -7.706297|   -7.939714|  -10.736675|
+|         103|   -5.012840|   -7.721070|   -7.955225|  -10.751418|
+|         104|   -5.027730|   -7.735986|   -7.970848|  -10.766291|
+|         105|   -5.042754|   -7.751032|   -7.986572|  -10.781284|
+|         106|   -5.057901|   -7.766198|   -8.002380|  -10.796384|
+|         107|   -5.073158|   -7.781471|   -8.018260|  -10.811578|
+|         108|   -5.088512|   -7.796837|   -8.034196|  -10.826852|
+|         109|   -5.103949|   -7.812283|   -8.050174|  -10.842192|
+|         110|   -5.119456|   -7.827794|   -8.066177|  -10.857584|
+|         111|   -5.135017|   -7.843357|   -8.082192|  -10.873014|
+|         112|   -5.150619|   -7.858957|   -8.098206|  -10.888469|
+|         113|   -5.166248|   -7.874582|   -8.114204|  -10.903935|
+|         114|   -5.181890|   -7.890218|   -8.130175|  -10.919400|
+|         115|   -5.197534|   -7.905855|   -8.146110|  -10.934855|
+|         116|   -5.213167|   -7.921482|   -8.161999|  -10.950288|
+|         117|   -5.228781|   -7.937091|   -8.177837|  -10.965694|
+|         118|   -5.244367|   -7.952674|   -8.193619|  -10.981065|
+|         119|   -5.259920|   -7.968228|   -8.209342|  -10.996399|
+|         120|   -5.275434|   -7.983748|   -8.225008|  -11.011693|
+|         121|   -5.290907|   -7.999234|   -8.240618|  -11.026948|
+|         122|   -5.306340|   -8.014687|   -8.256177|  -11.042166|
+|         123|   -5.321734|   -8.030110|   -8.271692|  -11.057352|
+|         124|   -5.337094|   -8.045509|   -8.287173|  -11.072512|
+|         125|   -5.352426|   -8.060890|   -8.302631|  -11.087655|
+|         126|   -5.367738|   -8.076262|   -8.318078|  -11.102790|
+|         127|   -5.383041|   -8.091636|   -8.333530|  -11.117930|
+|         128|   -5.398344|   -8.107023|   -8.349000|  -11.133085|
+|         129|   -5.413662|   -8.122436|   -8.364506|  -11.148270|
+|         130|   -5.429007|   -8.137890|   -8.380065|  -11.163499|
+|         131|   -5.444395|   -8.153398|   -8.395692|  -11.178786|
+|         132|   -5.459839|   -8.168975|   -8.411406|  -11.194144|
+|         133|   -5.475355|   -8.184635|   -8.427222|  -11.209587|
+|         134|   -5.490958|   -8.200393|   -8.443156|  -11.225130|
+|         135|   -5.506663|   -8.216263|   -8.459223|  -11.240785|
+|         136|   -5.522482|   -8.232257|   -8.475436|  -11.256564|
+|         137|   -5.538429|   -8.248388|   -8.491807|  -11.272477|
+|         138|   -5.554515|   -8.264666|   -8.508347|  -11.288534|
+|         139|   -5.570752|   -8.281103|   -8.525063|  -11.304743|
+|         140|   -5.587148|   -8.297705|   -8.541964|  -11.321110|
+|         141|   -5.603710|   -8.314480|   -8.559054|  -11.337642|
+|         142|   -5.620446|   -8.331433|   -8.576335|  -11.354341|
+|         143|   -5.637359|   -8.348568|   -8.593808|  -11.371210|
+|         144|   -5.654452|   -8.365887|   -8.611474|  -11.388249|
+|         145|   -5.671725|   -8.383391|   -8.629328|  -11.405457|
+|         146|   -5.689178|   -8.401077|   -8.647366|  -11.422832|
+|         147|   -5.706808|   -8.418944|   -8.665582|  -11.440370|
+|         148|   -5.724612|   -8.436987|   -8.683967|  -11.458065|
+|         149|   -5.742583|   -8.455200|   -8.702513|  -11.475911|
+|         150|   -5.760714|   -8.473577|   -8.721209|  -11.493902|
+|         151|   -5.778997|   -8.492108|   -8.740043|  -11.512028|
+|         152|   -5.797423|   -8.510786|   -8.759004|  -11.530280|
+|         153|   -5.815981|   -8.529599|   -8.778078|  -11.548649|
+|         154|   -5.834660|   -8.548537|   -8.797253|  -11.567124|
+|         155|   -5.853448|   -8.567590|   -8.816515|  -11.585696|
+|         156|   -5.872333|   -8.586745|   -8.835853|  -11.604353|
+|         157|   -5.891303|   -8.605991|   -8.855253|  -11.623087|
+|         158|   -5.910347|   -8.625317|   -8.874705|  -11.641886|
+|         159|   -5.929451|   -8.644713|   -8.894199|  -11.660741|
+|         160|   -5.948605|   -8.664167|   -8.913725|  -11.679645|
+|         161|   -5.967799|   -8.683671|   -8.933277|  -11.698588|
+|         162|   -5.987023|   -8.703216|   -8.952847|  -11.717565|
+|         163|   -6.006268|   -8.722794|   -8.972432|  -11.736570|
+|         164|   -6.025528|   -8.742400|   -8.992029|  -11.755597|
+|         165|   -6.044797|   -8.762028|   -9.011637|  -11.774644|
+|         166|   -6.064070|   -8.781675|   -9.031256|  -11.793708|
+|         167|   -6.083345|   -8.801340|   -9.050889|  -11.812789|
+|         168|   -6.102619|   -8.821021|   -9.070539|  -11.831886|
+|         169|   -6.121893|   -8.840719|   -9.090211|  -11.851001|
+|         170|   -6.141167|   -8.860436|   -9.109912|  -11.870137|
+|         171|   -6.160445|   -8.880175|   -9.129647|  -11.889295|
+|         172|   -6.179729|   -8.899940|   -9.149425|  -11.908480|
+|         173|   -6.199023|   -8.919736|   -9.169253|  -11.927697|
+|         174|   -6.218333|   -8.939568|   -9.189139|  -11.946951|
+|         175|   -6.237664|   -8.959443|   -9.209093|  -11.966246|
+|         176|   -6.257021|   -8.979368|   -9.229120|  -11.985588|
+|         177|   -6.276411|   -8.999347|   -9.249229|  -12.004983|
+|         178|   -6.295839|   -9.019388|   -9.269427|  -12.024436|
+|         179|   -6.315312|   -9.039498|   -9.289720|  -12.043952|
+|         180|   -6.334834|   -9.059682|   -9.310113|  -12.063535|
+|         181|   -6.354409|   -9.079946|   -9.330611|  -12.083190|
+|         182|   -6.374043|   -9.100294|   -9.351216|  -12.102921|
+|         183|   -6.393738|   -9.120730|   -9.371931|  -12.122730|
+|         184|   -6.413497|   -9.141259|   -9.392757|  -12.142621|
+|         185|   -6.433321|   -9.161882|   -9.413694|  -12.162594|
+|         186|   -6.453211|   -9.182601|   -9.434740|  -12.182651|
+|         187|   -6.473166|   -9.203416|   -9.455895|  -12.202793|
+|         188|   -6.493185|   -9.224329|   -9.477154|  -12.223018|
+|         189|   -6.513266|   -9.245337|   -9.498513|  -12.243328|
+|         190|   -6.533407|   -9.266439|   -9.519969|  -12.263719|
+|         191|   -6.553601|   -9.287631|   -9.541515|  -12.284190|
+|         192|   -6.573846|   -9.308911|   -9.563145|  -12.304739|
+|         193|   -6.594136|   -9.330275|   -9.584853|  -12.325363|
+|         194|   -6.614464|   -9.351717|   -9.606633|  -12.346058|
+|         195|   -6.634825|   -9.373233|   -9.628477|  -12.366822|
+|         196|   -6.655211|   -9.394817|   -9.650379|  -12.387651|
+|         197|   -6.675616|   -9.416463|   -9.672331|  -12.408541|
+|         198|   -6.696033|   -9.438165|   -9.694328|  -12.429490|
+|         199|   -6.716453|   -9.459917|   -9.716363|  -12.450493|
+|         200|   -6.736871|   -9.481713|   -9.738430|  -12.471547|
+|         201|   -6.757279|   -9.503546|   -9.760525|  -12.492649|
+|         202|   -6.777671|   -9.525412|   -9.782643|  -12.513796|
+|         203|   -6.798040|   -9.547303|   -9.804781|  -12.534986|
+|         204|   -6.818381|   -9.569216|   -9.826935|  -12.556217|
+|         205|   -6.838690|   -9.591145|   -9.849105|  -12.577486|
+|         206|   -6.858960|   -9.613086|   -9.871287|  -12.598793|
+|         207|   -6.879188|   -9.635034|   -9.893483|  -12.620136|
+|         208|   -6.899371|   -9.656988|   -9.915693|  -12.641515|
+|         209|   -6.919506|   -9.678943|   -9.937917|  -12.662931|
+|         210|   -6.939591|   -9.700898|   -9.960158|  -12.684382|
+|         211|   -6.959624|   -9.722851|   -9.982418|  -12.705871|
+|         212|   -6.979604|   -9.744800|  -10.004700|  -12.727398|
+|         213|   -6.999531|   -9.766744|  -10.027007|  -12.748965|
+|         214|   -7.019404|   -9.788684|  -10.049344|  -12.770573|
+|         215|   -7.039224|   -9.810618|  -10.071714|  -12.792225|
+|         216|   -7.058992|   -9.832547|  -10.094122|  -12.813922|
+|         217|   -7.078707|   -9.854472|  -10.116571|  -12.835667|
+|         218|   -7.098372|   -9.876392|  -10.139066|  -12.857462|
+|         219|   -7.117987|   -9.898307|  -10.161611|  -12.879311|
+|         220|   -7.137554|   -9.920219|  -10.184209|  -12.901214|
+|         221|   -7.157073|   -9.942127|  -10.206864|  -12.923176|
+|         222|   -7.176545|   -9.964031|  -10.229578|  -12.945197|
+|         223|   -7.195972|   -9.985931|  -10.252356|  -12.967281|
+|         224|   -7.215355|  -10.007826|  -10.275197|  -12.989429|
+|         225|   -7.234693|  -10.029715|  -10.298105|  -13.011644|
+|         226|   -7.253986|  -10.051596|  -10.321079|  -13.033926|
+|         227|   -7.273236|  -10.073467|  -10.344121|  -13.056276|
+|         228|   -7.292441|  -10.095326|  -10.367229|  -13.078697|
+|         229|   -7.311601|  -10.117169|  -10.390403|  -13.101188|
+|         230|   -7.330716|  -10.138992|  -10.413642|  -13.123750|
+|         231|   -7.349783|  -10.160792|  -10.436943|  -13.146383|
+|         232|   -7.368803|  -10.182561|  -10.460304|  -13.169086|
+|         233|   -7.387773|  -10.204296|  -10.483721|  -13.191859|
+|         234|   -7.406691|  -10.225989|  -10.507191|  -13.214700|
+|         235|   -7.425557|  -10.247635|  -10.530710|  -13.237608|
+|         236|   -7.444368|  -10.269225|  -10.554273|  -13.260582|
+|         237|   -7.463123|  -10.290752|  -10.577875|  -13.283618|
+|         238|   -7.481820|  -10.312209|  -10.601512|  -13.306716|
+|         239|   -7.500456|  -10.333587|  -10.625178|  -13.329873|
+|         240|   -7.519031|  -10.354878|  -10.648869|  -13.353085|
+|         241|   -7.537543|  -10.376074|  -10.672579|  -13.376350|
+|         242|   -7.555991|  -10.397168|  -10.696302|  -13.399666|
+|         243|   -7.574374|  -10.418150|  -10.720035|  -13.423029|
+|         244|   -7.592691|  -10.439014|  -10.743773|  -13.446436|
+|         245|   -7.610942|  -10.459752|  -10.767511|  -13.469884|
+|         246|   -7.629128|  -10.480358|  -10.791246|  -13.493372|
+|         247|   -7.647248|  -10.500827|  -10.814974|  -13.516895|
+|         248|   -7.665303|  -10.521152|  -10.838693|  -13.540452|
+|         249|   -7.683295|  -10.541331|  -10.862401|  -13.564040|
+|         250|   -7.701224|  -10.561360|  -10.886097|  -13.587658|
+
+-------------------------------------------------------------------------
+Clearing the computational graph.
+
+-------------------------------------------------------------------------
+Storing computational graph wrt MESH COORDINATES.
+-------------------------------------
+CoDi Tape Statistics ( JacobianLinearTape )
+-------------------------------------
+  Total memory used      :       59.97 MB
+  Total memory allocated :       66.69 MB
+-------------------------------------
+Adjoint vector
+-------------------------------------
+  Number of adjoints     :     1647047
+  Memory allocated       :       12.57 MB
+-------------------------------------
+Index manager
+-------------------------------------
+  Max. live indices      :     1647047
+-------------------------------------
+Statement entries
+-------------------------------------
+  Total number           :     1647047
+  Number of chunks       :           1
+  Memory used            :        1.57 MB
+  Memory allocated       :        2.00 MB
+-------------------------------------
+Jacobian entries
+-------------------------------------
+  Total number           :     3998527
+  Number of chunks       :           2
+  Memory used            :       45.76 MB
+  Memory allocated       :       48.00 MB
+-------------------------------------
+Low level function info data entries
+-------------------------------------
+  Total number           :        1801
+  Number of chunks       :           1
+  Memory used            :        7.04 KB
+  Memory allocated       :      128.00 KB
+-------------------------------------
+Low level function byte data entries
+-------------------------------------
+  Total number           :       72040
+  Number of chunks       :           1
+  Memory used            :       70.35 KB
+  Memory allocated       :        4.00 MB
+-------------------------------------
+MPI
+-------------------------------------
+  Total memory used      :  7.33867e+08 MB
+-------------------------------------
+
++-----------------------------------------------------------------------+
+|        File Writing Summary       |              Filename             |
++-----------------------------------------------------------------------+
+|SU2 binary restart                 |restart_adj_cl_0.dat               |
+|                                   |                     (336.693 MB/s)|
+|Paraview                           |adjoint_0.vtu                      |
+|                                   |                     (292.228 MB/s)|
+|Paraview surface                   |surface_adjoint_0.vtu              |
+|                                   |                     (6.39826 MB/s)|
++-----------------------------------------------------------------------+
+
+-------------------------------------------------------------------------
+Clearing the computational graph.
+
+-------------------------------------------------------------------------
+Storing computational graph wrt CONSERVATIVE VARIABLES.
++---------------------------------------------------------------+
+| rms_Flow[0][0]| rms_Flow[1][0]| rms_Flow[2][0]| rms_Flow[3][0]|
++---------------------------------------------------------------+
+|-13.9707404267608|-10.9894458368578|-11.6233458043156|-8.13586238190304|
++---------------------------------------------------------------+
+
+-------------------------------------------------------------------------
+
+-------------------------------------
+CoDi Tape Statistics ( JacobianLinearTape )
+-------------------------------------
+  Total memory used      :       52.97 MB
+  Total memory allocated :       66.02 MB
+-------------------------------------
+Adjoint vector
+-------------------------------------
+  Number of adjoints     :     1558718
+  Memory allocated       :       11.89 MB
+-------------------------------------
+Index manager
+-------------------------------------
+  Max. live indices      :     1558718
+-------------------------------------
+Statement entries
+-------------------------------------
+  Total number           :     1558718
+  Number of chunks       :           1
+  Memory used            :        1.49 MB
+  Memory allocated       :        2.00 MB
+-------------------------------------
+Jacobian entries
+-------------------------------------
+  Total number           :     3453499
+  Number of chunks       :           2
+  Memory used            :       39.52 MB
+  Memory allocated       :       48.00 MB
+-------------------------------------
+Low level function info data entries
+-------------------------------------
+  Total number           :        1705
+  Number of chunks       :           1
+  Memory used            :        6.66 KB
+  Memory allocated       :      128.00 KB
+-------------------------------------
+Low level function byte data entries
+-------------------------------------
+  Total number           :       68200
+  Number of chunks       :           1
+  Memory used            :       66.60 KB
+  Memory allocated       :        4.00 MB
+-------------------------------------
+MPI
+-------------------------------------
+  Total memory used      :  647188380 MB
+-------------------------------------
+
+|         251|   -7.719094|  -10.581235|  -10.909779|  -13.611305|
+|         252|   -7.736907|  -10.600957|  -10.933448|  -13.634979|
+|         253|   -7.754664|  -10.620525|  -10.957105|  -13.658680|
+|         254|   -7.772370|  -10.639938|  -10.980752|  -13.682408|
+|         255|   -7.790026|  -10.659200|  -11.004392|  -13.706163|
+|         256|   -7.807638|  -10.678312|  -11.028026|  -13.729946|
+|         257|   -7.825209|  -10.697278|  -11.051660|  -13.753759|
+|         258|   -7.842742|  -10.716102|  -11.075297|  -13.777604|
+|         259|   -7.860243|  -10.734789|  -11.098944|  -13.801484|
+|         260|   -7.877714|  -10.753345|  -11.122604|  -13.825401|
+|         261|   -7.895160|  -10.771776|  -11.146286|  -13.849359|
+|         262|   -7.912586|  -10.790088|  -11.169995|  -13.873362|
+|         263|   -7.929996|  -10.808289|  -11.193738|  -13.897415|
+|         264|   -7.947393|  -10.826385|  -11.217522|  -13.921523|
+|         265|   -7.964783|  -10.844385|  -11.241355|  -13.945690|
+|         266|   -7.982169|  -10.862294|  -11.265244|  -13.969924|
+|         267|   -7.999555|  -10.880122|  -11.289195|  -13.994228|
+|         268|   -8.016945|  -10.897874|  -11.313218|  -14.018611|
+|         269|   -8.034342|  -10.915558|  -11.337317|  -14.043077|
+|         270|   -8.051749|  -10.933181|  -11.361501|  -14.067634|
+|         271|   -8.069170|  -10.950750|  -11.385777|  -14.092287|
+|         272|   -8.086608|  -10.968269|  -11.410149|  -14.117044|
+|         273|   -8.104065|  -10.985746|  -11.434625|  -14.141910|
+|         274|   -8.121544|  -11.003186|  -11.459209|  -14.166893|
+|         275|   -8.139047|  -11.020593|  -11.483907|  -14.191997|
+|         276|   -8.156575|  -11.037972|  -11.508722|  -14.217230|
+|         277|   -8.174132|  -11.055328|  -11.533660|  -14.242596|
+|         278|   -8.191717|  -11.072664|  -11.558723|  -14.268102|
+|         279|   -8.209333|  -11.089983|  -11.583914|  -14.293753|
+|         280|   -8.226982|  -11.107290|  -11.609235|  -14.319553|
+|         281|   -8.244663|  -11.124586|  -11.634687|  -14.345507|
+|         282|   -8.262378|  -11.141875|  -11.660271|  -14.371620|
+|         283|   -8.280127|  -11.159158|  -11.685988|  -14.397894|
+|         284|   -8.297911|  -11.176437|  -11.711837|  -14.424333|
+|         285|   -8.315731|  -11.193714|  -11.737817|  -14.450940|
+|         286|   -8.333587|  -11.210991|  -11.763927|  -14.477717|
+|         287|   -8.351480|  -11.228270|  -11.790162|  -14.504665|
+|         288|   -8.369409|  -11.245550|  -11.816522|  -14.531786|
+|         289|   -8.387374|  -11.262835|  -11.843001|  -14.559080|
+|         290|   -8.405377|  -11.280124|  -11.869596|  -14.586546|
+|         291|   -8.423416|  -11.297420|  -11.896302|  -14.614185|
+|         292|   -8.441493|  -11.314723|  -11.923113|  -14.641995|
+|         293|   -8.459607|  -11.332034|  -11.950024|  -14.669972|
+|         294|   -8.477758|  -11.349355|  -11.977027|  -14.698115|
+|         295|   -8.495947|  -11.366687|  -12.004116|  -14.726420|
+|         296|   -8.514174|  -11.384031|  -12.031283|  -14.754881|
+|         297|   -8.532439|  -11.401388|  -12.058520|  -14.783494|
+|         298|   -8.550742|  -11.418761|  -12.085818|  -14.812252|
+|         299|   -8.569084|  -11.436150|  -12.113170|  -14.841147|
+|         300|   -8.587465|  -11.453557|  -12.140565|  -14.870172|
+|         301|   -8.605886|  -11.470984|  -12.167994|  -14.899316|
+|         302|   -8.624347|  -11.488433|  -12.195447|  -14.928569|
+|         303|   -8.642848|  -11.505906|  -12.222916|  -14.957919|
+|         304|   -8.661391|  -11.523404|  -12.250389|  -14.987353|
+|         305|   -8.679975|  -11.540930|  -12.277857|  -15.016857|
+|         306|   -8.698603|  -11.558485|  -12.305310|  -15.046416|
+|         307|   -8.717274|  -11.576073|  -12.332738|  -15.076013|
+|         308|   -8.735989|  -11.593695|  -12.360132|  -15.105629|
+|         309|   -8.754750|  -11.611353|  -12.387481|  -15.135247|
+|         310|   -8.773557|  -11.629051|  -12.414777|  -15.164844|
+|         311|   -8.792412|  -11.646789|  -12.442012|  -15.194400|
+|         312|   -8.811315|  -11.664572|  -12.469176|  -15.223892|
+|         313|   -8.830269|  -11.682401|  -12.496263|  -15.253297|
+|         314|   -8.849273|  -11.700278|  -12.523265|  -15.282589|
+|         315|   -8.868329|  -11.718207|  -12.550176|  -15.311745|
+|         316|   -8.887438|  -11.736189|  -12.576991|  -15.340739|
+|         317|   -8.906603|  -11.754227|  -12.603704|  -15.369545|
+|         318|   -8.925823|  -11.772324|  -12.630313|  -15.398139|
+|         319|   -8.945100|  -11.790482|  -12.656814|  -15.426497|
+|         320|   -8.964437|  -11.808703|  -12.683206|  -15.454594|
+|         321|   -8.983833|  -11.826990|  -12.709487|  -15.482408|
+|         322|   -9.003291|  -11.845344|  -12.735657|  -15.509918|
+|         323|   -9.022811|  -11.863770|  -12.761718|  -15.537107|
+|         324|   -9.042396|  -11.882267|  -12.787670|  -15.563958|
+|         325|   -9.062047|  -11.900839|  -12.813518|  -15.590457|
+|         326|   -9.081764|  -11.919489|  -12.839263|  -15.616593|
+|         327|   -9.101550|  -11.938217|  -12.864911|  -15.642360|
+|         328|   -9.121405|  -11.957026|  -12.890467|  -15.667752|
+|         329|   -9.141332|  -11.975918|  -12.915936|  -15.692769|
+|         330|   -9.161332|  -11.994895|  -12.941324|  -15.717414|
+|         331|   -9.181405|  -12.013959|  -12.966639|  -15.741692|
+|         332|   -9.201554|  -12.033111|  -12.991886|  -15.765611|
+|         333|   -9.221779|  -12.052354|  -13.017073|  -15.789184|
+|         334|   -9.242082|  -12.071689|  -13.042208|  -15.812424|
+|         335|   -9.262465|  -12.091118|  -13.067298|  -15.835347|
+|         336|   -9.282928|  -12.110642|  -13.092351|  -15.857972|
+|         337|   -9.303474|  -12.130263|  -13.117372|  -15.880317|
+|         338|   -9.324102|  -12.149983|  -13.142371|  -15.902404|
+|         339|   -9.344815|  -12.169802|  -13.167353|  -15.924254|
+|         340|   -9.365614|  -12.189723|  -13.192324|  -15.945888|
+|         341|   -9.386500|  -12.209747|  -13.217291|  -15.967328|
+|         342|   -9.407474|  -12.229874|  -13.242258|  -15.988597|
+|         343|   -9.428538|  -12.250107|  -13.267231|  -16.009715|
+|         344|   -9.449692|  -12.270447|  -13.292213|  -16.030702|
+|         345|   -9.470938|  -12.290895|  -13.317207|  -16.051578|
+|         346|   -9.492277|  -12.311452|  -13.342217|  -16.072362|
+|         347|   -9.513711|  -12.332119|  -13.367243|  -16.093072|
+|         348|   -9.535239|  -12.352897|  -13.392287|  -16.113724|
+|         349|   -9.556865|  -12.373789|  -13.417348|  -16.134333|
+|         350|   -9.578588|  -12.394793|  -13.442426|  -16.154915|
+|         351|   -9.600410|  -12.415913|  -13.467520|  -16.175481|
+|         352|   -9.622331|  -12.437148|  -13.492627|  -16.196044|
+|         353|   -9.644354|  -12.458500|  -13.517744|  -16.216615|
+|         354|   -9.666479|  -12.479970|  -13.542866|  -16.237204|
+|         355|   -9.688707|  -12.501559|  -13.567990|  -16.257819|
+|         356|   -9.711040|  -12.523267|  -13.593111|  -16.278469|
+|         357|   -9.733478|  -12.545097|  -13.618222|  -16.299162|
+|         358|   -9.756023|  -12.567049|  -13.643317|  -16.319904|
+|         359|   -9.778676|  -12.589123|  -13.668390|  -16.340700|
+|         360|   -9.801437|  -12.611321|  -13.693434|  -16.361557|
+|         361|   -9.824309|  -12.633645|  -13.718442|  -16.382478|
+|         362|   -9.847291|  -12.656094|  -13.743407|  -16.403470|
+|         363|   -9.870386|  -12.678670|  -13.768322|  -16.424535|
+|         364|   -9.893594|  -12.701375|  -13.793181|  -16.445678|
+|         365|   -9.916917|  -12.724208|  -13.817976|  -16.466902|
+|         366|   -9.940355|  -12.747171|  -13.842702|  -16.488211|
+|         367|   -9.963910|  -12.770266|  -13.867353|  -16.509608|
+|         368|   -9.987584|  -12.793492|  -13.891925|  -16.531097|
+|         369|  -10.011376|  -12.816852|  -13.916414|  -16.552680|
+|         370|  -10.035289|  -12.840347|  -13.940818|  -16.574360|
+|         371|  -10.059324|  -12.863977|  -13.965133|  -16.596142|
+|         372|  -10.083482|  -12.887743|  -13.989360|  -16.618027|
+|         373|  -10.107763|  -12.911647|  -14.013498|  -16.640019|
+|         374|  -10.132170|  -12.935691|  -14.037548|  -16.662122|
+|         375|  -10.156704|  -12.959874|  -14.061514|  -16.684339|
+|         376|  -10.181366|  -12.984199|  -14.085399|  -16.706672|
+|         377|  -10.206157|  -13.008666|  -14.109207|  -16.729127|
+|         378|  -10.231079|  -13.033278|  -14.132945|  -16.751705|
+|         379|  -10.256133|  -13.058034|  -14.156618|  -16.774411|
+|         380|  -10.281320|  -13.082936|  -14.180234|  -16.797247|
+|         381|  -10.306642|  -13.107987|  -14.203802|  -16.820219|
+|         382|  -10.332101|  -13.133186|  -14.227331|  -16.843329|
+|         383|  -10.357696|  -13.158535|  -14.250830|  -16.866581|
+|         384|  -10.383431|  -13.184036|  -14.274310|  -16.889978|
+|         385|  -10.409306|  -13.209690|  -14.297780|  -16.913524|
+|         386|  -10.435322|  -13.235498|  -14.321251|  -16.937223|
+|         387|  -10.461483|  -13.261461|  -14.344734|  -16.961078|
+|         388|  -10.487787|  -13.287582|  -14.368239|  -16.985091|
+|         389|  -10.514238|  -13.313861|  -14.391778|  -17.009267|
+|         390|  -10.540837|  -13.340299|  -14.415359|  -17.033609|
+|         391|  -10.567585|  -13.366899|  -14.438994|  -17.058119|
+|         392|  -10.594483|  -13.393661|  -14.462692|  -17.082799|
+|         393|  -10.621534|  -13.420586|  -14.486462|  -17.107654|
+|         394|  -10.648738|  -13.447677|  -14.510313|  -17.132684|
+|         395|  -10.676097|  -13.474934|  -14.534252|  -17.157892|
+|         396|  -10.703613|  -13.502360|  -14.558288|  -17.183281|
+|         397|  -10.731287|  -13.529954|  -14.582427|  -17.208851|
+|         398|  -10.759121|  -13.557719|  -14.606675|  -17.234604|
+|         399|  -10.787116|  -13.585655|  -14.631038|  -17.260541|
+|         400|  -10.815273|  -13.613765|  -14.655522|  -17.286663|
+|         401|  -10.843594|  -13.642049|  -14.680130|  -17.312971|
+|         402|  -10.872081|  -13.670509|  -14.704865|  -17.339465|
+|         403|  -10.900734|  -13.699146|  -14.729732|  -17.366145|
+|         404|  -10.929556|  -13.727961|  -14.754731|  -17.393011|
+|         405|  -10.958547|  -13.756955|  -14.779866|  -17.420061|
+|         406|  -10.987710|  -13.786130|  -14.805136|  -17.447296|
+|         407|  -11.017044|  -13.815487|  -14.830543|  -17.474714|
+|         408|  -11.046553|  -13.845026|  -14.856087|  -17.502314|
+|         409|  -11.076237|  -13.874749|  -14.881767|  -17.530092|
+|         410|  -11.106097|  -13.904658|  -14.907583|  -17.558049|
+|         411|  -11.136134|  -13.934752|  -14.933533|  -17.586181|
+|         412|  -11.166351|  -13.965033|  -14.959615|  -17.614485|
+|         413|  -11.196748|  -13.995502|  -14.985829|  -17.642958|
+|         414|  -11.227326|  -14.026159|  -15.012171|  -17.671598|
+|         415|  -11.258086|  -14.057007|  -15.038640|  -17.700400|
+|         416|  -11.289030|  -14.088045|  -15.065232|  -17.729361|
+|         417|  -11.320158|  -14.119274|  -15.091946|  -17.758477|
+|         418|  -11.351473|  -14.150695|  -15.118778|  -17.787744|
+|         419|  -11.382974|  -14.182309|  -15.145726|  -17.817157|
+|         420|  -11.414662|  -14.214117|  -15.172787|  -17.846711|
+|         421|  -11.446540|  -14.246118|  -15.199958|  -17.876403|
+|         422|  -11.478606|  -14.278314|  -15.227237|  -17.906226|
+|         423|  -11.510864|  -14.310705|  -15.254621|  -17.936177|
+|         424|  -11.543312|  -14.343291|  -15.282108|  -17.966250|
+|         425|  -11.575952|  -14.376073|  -15.309695|  -17.996440|
+|         426|  -11.608785|  -14.409052|  -15.337382|  -18.026742|
+|         427|  -11.641812|  -14.442227|  -15.365164|  -18.057150|
+|         428|  -11.675032|  -14.475599|  -15.393042|  -18.087660|
+|         429|  -11.708447|  -14.509167|  -15.421017|  -18.118268|
+|         430|  -11.742057|  -14.542933|  -15.449082|  -18.148968|
+|         431|  -11.775863|  -14.576896|  -15.477241|  -18.179754|
+|         432|  -11.809865|  -14.611056|  -15.505492|  -18.210623|
+|         433|  -11.844063|  -14.645413|  -15.533834|  -18.241571|
+|         434|  -11.878459|  -14.679967|  -15.562270|  -18.272591|
+|         435|  -11.913051|  -14.714718|  -15.590796|  -18.303682|
+|         436|  -11.947841|  -14.749665|  -15.619415|  -18.334839|
+|         437|  -11.982828|  -14.784808|  -15.648127|  -18.366059|
+|         438|  -12.018013|  -14.820146|  -15.676931|  -18.397338|
+|         439|  -12.053395|  -14.855680|  -15.705830|  -18.428671|
+|         440|  -12.088975|  -14.891408|  -15.734823|  -18.460057|
+|         441|  -12.124752|  -14.927329|  -15.763910|  -18.491493|
+|         442|  -12.160726|  -14.963444|  -15.793095|  -18.522976|
+|         443|  -12.196898|  -14.999750|  -15.822373|  -18.554505|
+|         444|  -12.233266|  -15.036247|  -15.851748|  -18.586075|
+|         445|  -12.269830|  -15.072933|  -15.881222|  -18.617686|
+|         446|  -12.306589|  -15.109808|  -15.910789|  -18.649334|
+|         447|  -12.343544|  -15.146869|  -15.940451|  -18.681019|
+|         448|  -12.380692|  -15.184116|  -15.970206|  -18.712736|
+|         449|  -12.418034|  -15.221545|  -16.000062|  -18.744483|
+|         450|  -12.455567|  -15.259156|  -16.030004|  -18.776264|
+|         451|  -12.493292|  -15.296946|  -16.060036|  -18.808072|
+|         452|  -12.531205|  -15.334912|  -16.090153|  -18.839901|
+|         453|  -12.569307|  -15.373052|  -16.120365|  -18.871748|
+|         454|  -12.607595|  -15.411363|  -16.150646|  -18.903620|
+|         455|  -12.646066|  -15.449841|  -16.181010|  -18.935507|
+|         456|  -12.684719|  -15.488482|  -16.211449|  -18.967406|
+|         457|  -12.723552|  -15.527283|  -16.241957|  -18.999310|
+|         458|  -12.762562|  -15.566241|  -16.272530|  -19.031219|
+|         459|  -12.801744|  -15.605348|  -16.303150|  -19.063132|
+|         460|  -12.841097|  -15.644601|  -16.333833|  -19.095036|
+|         461|  -12.880616|  -15.683993|  -16.364567|  -19.126930|
+|         462|  -12.920298|  -15.723519|  -16.395343|  -19.158810|
+|         463|  -12.960137|  -15.763173|  -16.426141|  -19.190675|
+|         464|  -13.000129|  -15.802946|  -16.456968|  -19.222516|
+|         465|  -13.040268|  -15.842830|  -16.487827|  -19.254316|
+|         466|  -13.080549|  -15.882819|  -16.518706|  -19.286084|
+|         467|  -13.120965|  -15.922902|  -16.549580|  -19.317822|
+|         468|  -13.161509|  -15.963070|  -16.580455|  -19.349505|
+|         469|  -13.202174|  -16.003314|  -16.611352|  -19.381138|
+|         470|  -13.242951|  -16.043621|  -16.642224|  -19.412730|
+|         471|  -13.283831|  -16.083979|  -16.673091|  -19.444258|
+|         472|  -13.324805|  -16.124375|  -16.703954|  -19.475710|
+|         473|  -13.365863|  -16.164798|  -16.734791|  -19.507104|
+|         474|  -13.406995|  -16.205237|  -16.765622|  -19.538445|
+|         475|  -13.448188|  -16.245673|  -16.796400|  -19.569718|
+|         476|  -13.489433|  -16.286096|  -16.827182|  -19.600916|
+|         477|  -13.530712|  -16.326483|  -16.857943|  -19.632051|
+|         478|  -13.572017|  -16.366828|  -16.888698|  -19.663113|
+|         479|  -13.613334|  -16.407114|  -16.919417|  -19.694132|
+|         480|  -13.654646|  -16.447321|  -16.950129|  -19.725089|
+|         481|  -13.695939|  -16.487438|  -16.980804|  -19.755988|
+|         482|  -13.737199|  -16.527445|  -17.011505|  -19.786835|
+|         483|  -13.778408|  -16.567326|  -17.042202|  -19.817649|
+|         484|  -13.819553|  -16.607078|  -17.072915|  -19.848437|
+|         485|  -13.860624|  -16.646682|  -17.103652|  -19.879184|
+|         486|  -13.901597|  -16.686125|  -17.134338|  -19.909954|
+|         487|  -13.942459|  -16.725389|  -17.165101|  -19.940679|
+|         488|  -13.983196|  -16.764470|  -17.195865|  -19.971414|
+|         489|  -14.023798|  -16.803347|  -17.226664|  -20.002135|
+
+-------------------------------------------------------------------------
+Clearing the computational graph.
+
+-------------------------------------------------------------------------
+Storing computational graph wrt MESH COORDINATES.
+-------------------------------------
+CoDi Tape Statistics ( JacobianLinearTape )
+-------------------------------------
+  Total memory used      :       59.97 MB
+  Total memory allocated :       66.69 MB
+-------------------------------------
+Adjoint vector
+-------------------------------------
+  Number of adjoints     :     1647047
+  Memory allocated       :       12.57 MB
+-------------------------------------
+Index manager
+-------------------------------------
+  Max. live indices      :     1647047
+-------------------------------------
+Statement entries
+-------------------------------------
+  Total number           :     1647047
+  Number of chunks       :           1
+  Memory used            :        1.57 MB
+  Memory allocated       :        2.00 MB
+-------------------------------------
+Jacobian entries
+-------------------------------------
+  Total number           :     3998527
+  Number of chunks       :           2
+  Memory used            :       45.76 MB
+  Memory allocated       :       48.00 MB
+-------------------------------------
+Low level function info data entries
+-------------------------------------
+  Total number           :        1801
+  Number of chunks       :           1
+  Memory used            :        7.04 KB
+  Memory allocated       :      128.00 KB
+-------------------------------------
+Low level function byte data entries
+-------------------------------------
+  Total number           :       72040
+  Number of chunks       :           1
+  Memory used            :       70.35 KB
+  Memory allocated       :        4.00 MB
+-------------------------------------
+MPI
+-------------------------------------
+  Total memory used      :  7.33867e+08 MB
+-------------------------------------
+
++-----------------------------------------------------------------------+
+|        File Writing Summary       |              Filename             |
++-----------------------------------------------------------------------+
+|SU2 binary restart                 |restart_adj_cl_0.dat               |
+|                                   |                     (379.598 MB/s)|
+|Paraview                           |adjoint_0.vtu                      |
+|                                   |                     (330.486 MB/s)|
+|Paraview surface                   |surface_adjoint_0.vtu              |
+|                                   |                      (3.9838 MB/s)|
++-----------------------------------------------------------------------+
+
+--------------------------- Finalizing Solver ---------------------------
+Deleted CNumerics container.
+Deleted CIntegration container.
+Deleted CSolver container.
+Deleted CIteration container.
+Deleted CInterface container.
+Deleted CGeometry container.
+Deleted CFreeFormDefBox class.
+Deleted CSurfaceMovement class.
+Deleted CVolumetricMovement class.
+Deleted CConfig container.
+Deleted nInst container.
+Deleted COutput class.
+-------------------------------------------------------------------------
+
+
+-------------------------- Performance Summary --------------------------
+Simulation totals:
+   Wall-clock time (hrs):  0.00677891 |            Core-hrs:   0.0813469
+                   Cores:          12 |          DOFs/point:           8
+             Points/core:     1691.75 |   Ghost points/core:     151.583
+ Ghost/Owned Point Ratio:   0.0896015 | 
+
+Preprocessing phase:
+       Preproc. Time (s):   0.0955592 |   Preproc. Time (%):    0.391571
+
+Compute phase:
+        Compute Time (s):     24.2195 |    Compute Time (%):     99.2438
+         Iteration count:           0 | 
+
+Output phase:
+         Output Time (s):   0.0889841 |     Output Time (%):    0.364628
+            Output count:           2 |       Avg. s/output:   0.0444921
+ Restart Aggr. BW (MB/s):     358.145 |           MB/s/core:     29.8455
+-------------------------------------------------------------------------
+
+
+------------------------- Exit Success (SU2_CFD) ------------------------
+

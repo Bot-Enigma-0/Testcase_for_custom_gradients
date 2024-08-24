@@ -1,0 +1,133 @@
+
+-------------------------------------------------------------------------
+|    ___ _   _ ___                                                      |
+|   / __| | | |_  )   Release 8.0.1 "Harrier"                           |
+|   \__ \ |_| |/ /                                                      |
+|   |___/\___//___|   Suite (Mesh Deformation Code)                     |
+|                                                                       |
+-------------------------------------------------------------------------
+| SU2 Project Website: https://su2code.github.io                        |
+|                                                                       |
+| The SU2 Project is maintained by the SU2 Foundation                   |
+| (http://su2foundation.org)                                            |
+-------------------------------------------------------------------------
+| Copyright 2012-2024, SU2 Contributors                                 |
+|                                                                       |
+| SU2 is free software; you can redistribute it and/or                  |
+| modify it under the terms of the GNU Lesser General Public            |
+| License as published by the Free Software Foundation; either          |
+| version 2.1 of the License, or (at your option) any later version.    |
+|                                                                       |
+| SU2 is distributed in the hope that it will be useful,                |
+| but WITHOUT ANY WARRANTY; without even the implied warranty of        |
+| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU      |
+| Lesser General Public License for more details.                       |
+|                                                                       |
+| You should have received a copy of the GNU Lesser General Public      |
+| License along with SU2. If not, see <http://www.gnu.org/licenses/>.   |
+-------------------------------------------------------------------------
+
+----------------- Physical Case Definition ( Zone 0 ) -------------------
+Input mesh file name: ../wedge_step.su2
+
+---------------- Grid deformation parameters ( Zone 0 )  ----------------
+Grid deformation using a linear elasticity method.
+Setting the FFD box structure.
+FFD boxes definition (FFD tag <-> degree <-> coord):
+Wall <-> ( 20, 10, 0 ) <-> ( 2, -0.1, 0, 6, 0.9, 0, 6, 1.1, 0, 2, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+
+-------------------- Output Information ( Zone 0 ) ----------------------
+Output mesh file name: wedge_with_ffd.su2. 
+Cell stiffness scaled by distance to nearest solid surface.
+
+------------- Config File Boundary Information ( Zone 0 ) ---------------
++-----------------------------------------------------------------------+
+|                        Marker Type|                        Marker Name|
++-----------------------------------------------------------------------+
+|                         Euler wall|                               Wall|
++-----------------------------------------------------------------------+
+|                          Far-field|                                Far|
++-----------------------------------------------------------------------+
+|          Supersonic inlet boundary|                              Inlet|
++-----------------------------------------------------------------------+
+|         Supersonic outlet boundary|                             Outlet|
++-----------------------------------------------------------------------+
+Two dimensional problem.
+20301 grid points before partitioning.
+20000 volume elements before partitioning.
+4 surface markers.
+140 boundary elements in index 0 (Marker = Inlet).
+100 boundary elements in index 1 (Marker = Outlet).
+200 boundary elements in index 2 (Marker = Far).
+160 boundary elements in index 3 (Marker = Wall).
+Executing the partitioning functions.
+Building the graph adjacency structure.
+Calling ParMETIS... graph partitioning complete (900 edge cuts).
+Distributing ParMETIS coloring.
+Rebalancing vertices.
+Rebalancing volume element connectivity.
+Rebalancing markers and surface elements.
+22120 vertices including ghost points. 
+20899 interior elements including halo cells. 
+20899 quadrilaterals.
+Establishing MPI communication patterns.
+
+----------------------- Preprocessing computations ----------------------
+Setting local point connectivity.
+Checking the numerical grid orientation of the interior elements.
+All volume elements are correctly orientend.
+There has been a re-orientation of 102 LINE surface elements.
+Identify edges and vertices.
+Setting the bound control volume structure.
+Area of the computational grid: 45.9736.
+  Info: Ignoring the following volume output fields/groups:
+  SOLUTION
+Volume output fields: COORDINATES
+  Info: Ignoring the following screen output fields:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+Screen output fields: OUTER_ITER
+  Info: Ignoring the following history output groups:
+  RMS_RES[0], RMS_RES[1], RMS_RES[2], RMS_RES[3], RMS_RES[4], AVG_CFL[0], DRAG[0], LIFT[0]
+History output group(s): OUTER_ITER
+Ignoring Convergence Field(s): RMS_ADJ_DENSITY[0] 
+Warning: No (valid) fields chosen for convergence monitoring. Convergence monitoring inactive.
+Warning: No (valid) fields chosen for time convergence monitoring. Time convergence monitoring inactive.
+
+--------------------- Surface grid deformation (ZONE 0) -----------------
+Performing the deformation of the surface grid.
+1 Free Form Deformation boxes.
+1 Free Form Deformation nested levels.
+FFD box tag: Wall. FFD box level: 0. Degrees: 20, 10.
+FFD Blending using Bezier Curves.
+Number of parent boxes: 0. Number of child boxes: 0.
+
+----------------- FFD technique (cartesian -> parametric) ---------------
+Computed parametric coord for FFD box 'Wall'
+  Number of vertices (Total, Inside FFD, Mapped to FFD): 169, 87, 87
+  Max coord difference: 1.77982e-15
+Writing a Paraview file of the FFD boxes.
+Writing a Paraview file of the FFD boxes.
+No surface deformation (setting FFD).
+
+Completed in 0.017201 seconds on 12 cores.
+
+----------------------- Write deformed grid files -----------------------
+|SU2 mesh                           |wedge_with_ffd.su2                 |
+|                                   |                           (0 MB/s)|
+|Paraview                           |volume_deformed_0.vtu              |
+|                                   |                     (190.984 MB/s)|
+|Paraview surface                   |surface_deformed_0.vtu             |
+|                                   |                     (5.01073 MB/s)|
+Adding any FFD information to the SU2 file.
+
+------------------------- Finalize Solver -------------------------
+Deleted CNumerics container.
+Deleted CSolver container.
+Deleted CGeometry container.
+Deleted CSurfaceMovement class.
+Deleted CVolumetricMovement class.
+Deleted CConfig container.
+Deleted COutput class.
+
+------------------------- Exit Success (SU2_DEF) ------------------------
+
